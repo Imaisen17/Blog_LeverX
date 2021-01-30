@@ -10,11 +10,12 @@ public class Message {
 
     private String text;
     private String tag;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User author;
 
-
+    private String filename;
 
     public Message() {
     }
@@ -24,8 +25,17 @@ public class Message {
         this.text = text;
         this.tag = tag;
     }
-    public String getAuthorName(){
-        return author!= null ? author.getUsername() : "<none>";
+
+    public String getAuthorName() {
+        return author != null ? author.getUsername() : "<none>";
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
     public void setText(String text) {
@@ -51,11 +61,12 @@ public class Message {
     public void setTag(String tag) {
         this.tag = tag;
     }
-    public User getAuthor() {
-        return author;
+
+    public String getFilename() {
+        return filename;
     }
 
-    public void setAuthor(User author) {
-        this.author = author;
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 }
